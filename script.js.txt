@@ -1,0 +1,33 @@
+// Кнопка "Читать далее"
+const readMoreBtn = document.getElementById('readMoreBtn');
+const extraText = document.getElementById('extraText');
+let isExpanded = false;
+
+readMoreBtn.addEventListener('click', function() {
+    if (isExpanded) {
+        extraText.style.display = 'none';
+        readMoreBtn.textContent = '📖 Читать далее';
+        isExpanded = false;
+    } else {
+        extraText.style.display = 'block';
+        readMoreBtn.textContent = '📖 Свернуть';
+        isExpanded = true;
+    }
+});
+
+// Счётчик лайков
+let likeCount = localStorage.getItem('portfolioLikes');
+if (likeCount === null) {
+    likeCount = 0;
+} else {
+    likeCount = Number(likeCount);
+}
+document.getElementById('likeCount').textContent = likeCount;
+
+document.getElementById('likeBtn').addEventListener('click', function() {
+    likeCount++;
+    document.getElementById('likeCount').textContent = likeCount;
+    localStorage.setItem('portfolioLikes', likeCount);
+});
+
+console.log('Сайт работает!');
